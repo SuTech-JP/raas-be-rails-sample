@@ -1,12 +1,9 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  # RaasのcreateSession用のAPI
   post '/raas/datatraveler/session', to: 'raas#datatraveler_session'
   post '/raas/report/session', to: 'raas#report_session'
 
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
-  get "up" => "rails/health#show", as: :rails_health_check
-
-  # Defines the root path route ("/")
-  # root "posts#index"
+  # Raasのサンプルコードで使用するAPI
+  get '/raas/report/layout/:application/:schema', to: 'raas#load_layouts'
+  get '/raas/report/result/:targetId', to: 'raas#load_log_data'
 end
