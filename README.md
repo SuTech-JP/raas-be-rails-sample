@@ -35,3 +35,43 @@ Raas::Client::Rails::Engine.config.raas_client_rails.token = 'XXXX'
 ### 2.3 帳票レイアウト一覧を取得する
 - /raas/report/layout/{application}/{schema}
 
+
+## 3.組み込み方法
+
+以下の手順に従って、組み込みを行ってください。
+
+### 3.1 Raas提供のSDKライブラリを取得する
+
+```ruby
+gem "raas-client-rails"
+```
+
+```bash
+$ bundle install
+```
+
+### 3.2 raas_controller.rbを実装する
+
+```ruby
+class RaasController < ApplicationController
+  include Raas::Client::Rails::RaasControllerModule
+
+  # 必須：テナントID、ユーザーIDをRaasに渡す
+  def prepare_tenant_and_sub
+      super
+      # 現在のセッションのテナントIDをセットする
+      @tenant = "sample_tenant_id"
+      # 現在のセッションのユーザーIDをセットする
+      @sub = "sample_user_id"
+      # 現在のセッションのサブドメインをセットする(セッションごとにサブドメインが異なる場合)
+      # @sub_domain = "sample_sub_domain"
+  end
+end
+```
+
+### 3.3 `config/routes.rb` にエンドポイントを追加する
+
+```ruby
+  post '/raas/datatraveler/session', to: 'raas#datatraveler_session'
+  post '/raas/report/session', to: 'raas#report_session'
+```
