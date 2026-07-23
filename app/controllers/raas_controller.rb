@@ -10,8 +10,8 @@ class RaasController < ApplicationController
       @tenant = "sample_tenant_id"
       # 現在のセッションのユーザーIDをセットする
       @sub = "sample_user_id"
-      # 現在のセッションのサブドメインをセットする(セッションごとにサブドメインが異なる場合)
-      # @sub_domain = "sample_sub_domain"
+    # 現在のセッションのサブドメインをセットする(セッションごとにサブドメインが異なる場合)
+    # @sub_domain = "sample_sub_domain"
   end
 
   # サンプル：レイアウト一覧の取得
@@ -35,10 +35,10 @@ class RaasController < ApplicationController
     log_response = @restClient.get("/datatraveler/import/logs/#{params["targetId"]}", nil)
     data_import_log = JSON[log_response.body]
 
-		if data_import_log["status"] = "FINISH"
-			# ログデータ詳細取得APIを実行
+    if data_import_log["status"] == "FINISH"
+      # ログデータ詳細取得APIを実行
       log_detail_response = @restClient.get("/datatraveler/import/logs/#{params["targetId"]}/data", nil)
-			data_import_log["details"] = JSON[log_detail_response.body]
+      data_import_log["details"] = JSON[log_detail_response.body]
     end
 
     # 結果をJSONで返す

@@ -74,6 +74,6 @@ Rails.application.configure do
   # config.generators.apply_rubocop_autocorrect_after_generate!
 end
 
-Raas::Client::Rails::Engine.config.raas_client_rails.landscape   = 'LANDSCAPE'
-Raas::Client::Rails::Engine.config.raas_client_rails.application = 'APP'
-Raas::Client::Rails::Engine.config.raas_client_rails.token = 'TOKEN VALUE'
+Raas::Client::Rails::Engine.config.raas_client_rails.landscape   = "LANDSCAPE"
+Raas::Client::Rails::Engine.config.raas_client_rails.application = "APP"
+Raas::Client::Rails::Engine.config.raas_client_rails.token = "TOKEN VALUE"
