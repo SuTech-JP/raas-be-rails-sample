@@ -10,8 +10,8 @@ class RaasController < ApplicationController
       @tenant = "sample_tenant_id"
       # 現在のセッションのユーザーIDをセットする
       @sub = "sample_user_id"
-      # 現在のセッションのサブドメインをセットする(セッションごとにサブドメインが異なる場合)
-      # @sub_domain = "sample_sub_domain"
+    # 現在のセッションのサブドメインをセットする(セッションごとにサブドメインが異なる場合)
+    # @sub_domain = "sample_sub_domain"
   end
 
   # サンプル：レイアウト一覧の取得
