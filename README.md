@@ -65,6 +65,8 @@ class RaasController < ApplicationController
       @sub = "sample_user_id"
       # 現在のセッションのサブドメインをセットする(セッションごとにサブドメインが異なる場合)
       # @sub_domain = "sample_sub_domain"
+      # 現在のユーザーに許可するスコープをセットする(スコープによる権限管理を使う場合、空白区切り)
+      # @scope = "csv_admin.invoice pdf.invoice"
   end
 end
 ```
